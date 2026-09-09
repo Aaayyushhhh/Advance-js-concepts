@@ -1,23 +1,52 @@
-function createToaster(config) {
-  return function (str) {
-    let div = document.createElement("div");
+// //method ke andar
+// let obj = {
+//   name: "harsh",
+//   sayName: function () {
+//     console.log(this);
+//   },
+// };
+// obj.sayName();
+// // event handler
+// document.querySelector("h1").addEventListener("click", function () {
+//   console.log(this);
+// });
+// //class ke andar
+// class Abcd {
+//   constructor() {
+//     console.log("heeh");
+//     this.a = 12;
+//   }
+// }
+// let val = new Abcd();
+// // this in global scope and fucntion value is always a window
 
-    div.textContent = str;
+//call apply and binf
+// let obj = {
+//   name: "harsh",
+// };
 
-    div.className = ` inline-block ${config.theme === "dark" ? "bg-gray-800 text-white" : "bg-gray-100 text-black"} px-6 py-3 rounded shadow-lg pointer-events-none transition-opacity `;
+// function abcd() {
+//   console.log(this);
+// }
+// abcd.call(obj);
 
-    document.querySelector(".parent").appendChild(div);
-    setTimeout(() => {
-      document.querySelector(".parent").removeChild(div);
-    }, config.duration * 1000);
-  };
-}
+// let obj = {
+//   names: "harsh",
+//   age: 12,
+// };
+// function abcd(a, b, c) {
+//   console.log(this, a, b, c);
+// }
+// abcd.apply(obj, [1, 2, 3]);
+//example for apply
 
-let toaster = createToaster({
-  positionX: "right",
-  positionY: "top",
-  theme: "light",
-  duration: 3,
-});
-
-toaster("Download done");
+// let obj = {
+//   names: "harsh",
+//   age: 12,
+// };
+// function abcd(a, b, c) {
+//   console.log(this, a, b, c);
+// }
+// let fnc = abcd.bind(obj, 1, 2, 3);
+// fnc();
+//example for bind
