@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
+            boxShadow: {
+              card: "0 30px 60px -18px rgba(15, 23, 42, .45), 0 8px 20px -8px rgba(15, 23, 42, .25)",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="min-h-screen bg-slate-100 font-sans text-slate-900 antialiased">
+    <div
+      class="main banda mx-auto flex min-h-screen max-w-4xl flex-wrap items-center justify-center gap-6 px-6 py-12"
+    ></div>
+
+    <div class="fixed bottom-6 right-6 z-50">
+      <button
+        id="refreshBtn"
+        type="button"
+        class="group inline-flex items-center gap-3 rounded-full border border-sky-200 bg-gradient-to-r from-sky-500 via-indigo-500 to-violet-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_45px_-18px_rgba(59,130,246,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_55px_-18px_rgba(79,70,229,0.9)] focus:outline-none focus:ring-4 focus:ring-sky-200 disabled:cursor-not-allowed disabled:opacity-80"
+      >
+        <span class="inline-flex h-5 w-5 items-center justify-center">
+          <svg
+            id="refreshIcon"
+            class="h-5 w-5 transition-transform duration-500 group-hover:rotate-180"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M20 11A8 8 0 1 0 18.356 16M20 4V11H13"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <span id="refreshText">Refresh</span>
+      </button>
+    </div>
+
+    <script>
+      const refreshBtn = document.getElementById("refreshBtn");
+      const refreshText = document.getElementById("refreshText");
+      const refreshIcon = document.getElementById("refreshIcon");
+
+      const handleRefresh = () => {
+        if (refreshBtn.disabled) return;
+
+        refreshBtn.disabled = true;
+        refreshText.textContent = "Updating...";
+        refreshIcon.classList.add("animate-spin");
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 700);
+      };
+
+      refreshBtn.addEventListener("click", handleRefresh);
+    </script>
+  </body>
+  <script src="script.js"></script>
+</html>
