@@ -53,3 +53,5 @@ function getUsers() {
       });
     });
 }
+getUsers();
+document.querySelector("#refreshBtn");
